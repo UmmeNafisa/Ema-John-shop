@@ -14,14 +14,14 @@ const useFirebase = () => {
     const gitHubProvider = new GithubAuthProvider;
     ;
     const signInUsingGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                console.log(result.user)
-                setUser(result.user);
-            })
-            .catch(error => {
-                setError(error.massage);
-            })
+        return signInWithPopup(auth, googleProvider)
+        // .then(result => {
+        //     console.log(result.user)
+        //     setUser(result.user);
+        // })
+        // .catch(error => {
+        //     setError(error.massage);
+        // })
 
     }
     const signInUsingGitHub = () => {

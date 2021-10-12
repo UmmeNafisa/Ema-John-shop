@@ -4,12 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import './login.css'
 import useAuth from '../../hooks/useAuth'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Login = () => {
     const { user, signInUsingGoogle } = useAuth();
-    const { location } = useLocation();
-    console.log("came from", location);
+    const history = useHistory();
+    const location = useLocation();
+    const redirect_url = location.state?.from || '/shop'
+    console.log("came from", location.state?.from);
+
+    const handleGoogleLogin = () => {
+        signInUsingGoogle().then(result => {
+            history.push(redirect_url);
+        })
+    }
     return (
         <div className="login-form" >
             <div >
@@ -25,7 +33,7 @@ const Login = () => {
 
                 <div> ----------- or ---------</div>
                 <br />
-                <button onClick={signInUsingGoogle}> <FontAwesomeIcon icon={faGoogle} /> </button>
+                <button onClick={handleGoogleLogin}> <FontAwesomeIcon icon={faGoogle} /> </button>
             </div>
         </div>
     );
