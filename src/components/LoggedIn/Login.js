@@ -33,7 +33,7 @@ const Login = () => {
 
                 <div> ----------- or ---------</div>
                 <br />
-                <button onClick={handleGoogleLogin}> <FontAwesomeIcon icon={faGoogle} /> </button>
+                <button onClick={handleGoogleLogin} className="btn-regular">   <FontAwesomeIcon icon={faGoogle} />  Google Sign in </button>
             </div>
         </div>
     );
